@@ -52,6 +52,7 @@ public class IGoodsDAOImpl implements IGoodsDAO{
 			goods.setManuFacturer(rs.getString(3));
 			goods.setSn(rs.getString(4));
 			goods.setSize(rs.getString(5));
+			all.add(goods);
 		}
 		this.pstmt.close();
 		return all;
@@ -74,6 +75,26 @@ public class IGoodsDAOImpl implements IGoodsDAO{
 		}
 		this.pstmt.close();
 		return goods;
+	}
+
+	@Override
+	public List<Goods> getAll() throws Exception {
+		List<Goods> all = new LinkedList<Goods>();
+		String sql = "select id, name, manuFacturer, sn, size from goods";
+		this.pstmt = this.conn.prepareStatement(sql);
+		ResultSet rs = this.pstmt.executeQuery();
+		Goods goods = null;
+		while(rs.next()) {
+			goods = new Goods();
+			goods.setId(rs.getInt(1));
+			goods.setName(rs.getString(2));
+			goods.setManuFacturer(rs.getString(3));
+			goods.setSn(rs.getString(4));
+			goods.setSize(rs.getString(5));
+			all.add(goods);
+		}
+		this.pstmt.close();
+		return all;
 	}
 	
 }

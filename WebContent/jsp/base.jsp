@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<div class="navbar navbar-header">
+<div class="navbar navbar-inverse">
 		<div class="navbar-inner">
 			<!-- Be sure to leave the brand out there if you want it shown -->
 			<a class="brand" href="">商品管理系统</a>
@@ -12,7 +12,7 @@
 				    <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)">库存管理<b class="caret"></b></a>
                     <ul class="dropdown-menu">
                           <li>
-                            <a href="entrepot_in_list.html">入库管理</a>
+                            <a href="order_in_list">入库管理</a>
                           </li>
                           <li>
                             <a href="entrepot_out_list.html">出库管理</a>

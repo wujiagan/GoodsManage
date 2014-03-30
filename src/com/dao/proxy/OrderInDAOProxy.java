@@ -2,23 +2,23 @@ package com.dao.proxy;
 
 import java.util.List;
 
-import com.dao.IGoodsDAO;
-import com.dao.impl.IGoodsDAOImpl;
+import com.dao.IOrderDAO;
+import com.dao.impl.IOrderInDAOImpl;
 import com.dbc.DatabaseConnection;
-import com.model.Goods;
+import com.model.Order;
 
-public class GoodsDAOProxy implements IGoodsDAO{
+public class OrderInDAOProxy implements IOrderDAO{
 	private DatabaseConnection dbc = null;
-	private IGoodsDAO dao = null;
-	public GoodsDAOProxy() throws Exception {
+	private IOrderDAO dao = null;
+	public OrderInDAOProxy() throws Exception {
 		this.dbc = new DatabaseConnection();
-		this.dao = new IGoodsDAOImpl(this.dbc.getConnection());
+		this.dao = new IOrderInDAOImpl(this.dbc.getConnection());
 	}
 	@Override
-	public boolean doCreate(Goods goods) throws Exception {
+	public boolean doCreate(Order order) throws Exception {
 		boolean flag = false;
 		try {
-			flag = this.dao.doCreate(goods);
+			flag = this.dao.doCreate(order);
 		} catch (Exception e) {
 			throw e;
 		}finally{
@@ -27,8 +27,8 @@ public class GoodsDAOProxy implements IGoodsDAO{
 		return flag;
 	}
 	@Override
-	public List<Goods> findAll(String keyWord) throws Exception {
-		List<Goods> all = null;
+	public List<Order> findAll(String keyWord) throws Exception {
+		List<Order> all = null;
 		try{
 			 all = this.dao.findAll(keyWord);
 		}catch(Exception e) {
@@ -39,20 +39,20 @@ public class GoodsDAOProxy implements IGoodsDAO{
 		return all;
 	}
 	@Override
-	public Goods findById(int id) throws Exception {
-		Goods goods = null;
+	public Order findById(int id) throws Exception {
+		Order order = null;
 		try{
-			goods = this.dao.findById(id);
+			order = this.dao.findById(id);
 		}catch(Exception e) {
 			throw e;
 		}finally{
 			this.dbc.close();
 		}
-		return goods;
+		return order;
 	}
 	@Override
-	public List<Goods> getAll() throws Exception {
-		List<Goods> all = null;
+	public List<Order> getAll() throws Exception {
+		List<Order> all = null;
 		try{
 			 all = this.dao.getAll();
 		}catch(Exception e) {
