@@ -5,6 +5,13 @@ import java.util.Date;
 public class Order {
 	private int id;
 	private int goods_id;
+	private String goods_name;
+	public String getGoods_name() {
+		return goods_name;
+	}
+	public void setGoods_name(String goods_name) {
+		this.goods_name = goods_name;
+	}
 	private int amount;
 	private Date date;
 	private String operateMan;

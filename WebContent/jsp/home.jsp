@@ -7,15 +7,40 @@
 <script type="text/javascript" src="../js/jquery-1.9.1.min.js"></script>
 <script src="../js/bootstrap.js"></script>
 <link href="../css/bootstrap.css" rel="stylesheet">
+<link href="../css/bootstrap-responsive.css" rel="stylesheet">
 <link href="../css/main.css" rel="stylesheet">
 </head>
 
 <body class="home">
-
      	<%@include file="base.jsp" %>
-        <div class="container">
-            <img src="abcde.jpg"/>
-        </div>
+        <div id="mycarousel" class="carousel slide" data-ride="carousel">
+		  <ol class="carousel-indicators">
+		    <li data-target="#carousel-example-generic" data-slide-to="0"></li>
+		    <li data-target="#carousel-example-generic" data-slide-to="1" class="active"></li>
+		    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+		  </ol>
+		
+		  <!-- Wrapper for slides -->
+		  <div class="carousel-inner">
+		      <div class="item active">
+		      <img src="../img/bg1.jpg" alt="">
+		      </div> 
+		      <div class="item">
+		      <img src="../img/bg2.jpg" alt="">
+		      </div> 
+		      <div class="item">
+		      <img src="../img/bg3.jpg" alt="">
+		      </div> 
+		  </div>
+		
+		  <!-- Controls -->
+		  <a class="left carousel-control" href="#mycarousel" data-slide="prev">
+		    <span class="glyphicon glyphicon-chevron-left"></span>
+		  </a>
+		  <a class="right carousel-control" href="#mycarousel" data-slide="next">
+		    <span class="glyphicon glyphicon-chevron-right"></span>
+		  </a>
+		</div>
 
 </body>
 </html>

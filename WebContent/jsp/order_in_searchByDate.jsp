@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ page import="com.factory.*, com.model.*"  %>
 <%@ page import="java.util.*"  %>
+<%@ page import="java.text.*" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <head>
@@ -17,7 +18,7 @@
 
 <body class="home">
 <%
-	List<Order> all = DAOFactory.getOrderInDAOInstance().getAll();
+	List<Order> all = DAOFactory.getOrderInDAOInstance().findAll(new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("start_date")), new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("end_date")));
 	Iterator<Order> iter = all.iterator();
 %>
      <%@include file="order_in_head.jsp" %>

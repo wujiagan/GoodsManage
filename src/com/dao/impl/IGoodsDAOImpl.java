@@ -37,7 +37,7 @@ public class IGoodsDAOImpl implements IGoodsDAO{
 	@Override
 	public List<Goods> findAll(String keyWord) throws Exception {
 		List<Goods> all = new LinkedList<Goods>();
-		String sql = "select id, name, manuFacturer, sn, size from goods"
+		String sql = "select id, name, manuFacturer, sn, size from goods "
 				+ "where name like ? or manuFacturer like ? or sn like ?";
 		this.pstmt = this.conn.prepareStatement(sql);
 		this.pstmt.setString(1, "%" + keyWord + "%");

@@ -16,21 +16,21 @@
 	List<Goods> all = DAOFactory.getGoodsDAOInstance().getAll();
 	Iterator<Goods> iter = all.iterator();
 %>
-     <%@include file="order_in_head.jsp" %>
+     <%@include file="order_out_head.jsp" %>
 
         <ul class="nav nav-tabs">
             <li>
-                <a href="order_in_list.jsp">入库列表</a>
+                <a href="order_out_list.jsp">出库列表</a>
             </li>
             <li class="active">
-                <a href="order_in_add.jsp">新建</a>
+                <a href="order_out_add.jsp">新建</a>
             </li>
             <li>
-                <a href="order_in_statistics.jsp">按时间查询</a>
+                <a href="order_out_statistics.jsp">按时间查询</a>
             </li>
         </ul>
 
-        <form class="form-horizontal" action="order_in_docreate.jsp" method="post">
+        <form class="form-horizontal" action="order_out_docreate.jsp" method="post">
             <div class="control-group">
                 <label class="control-label" for="goods">商品名称：</label>
                 <div class="controls">
@@ -57,9 +57,9 @@
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="deliveryman">送货人：</label>
+                <label class="control-label" for="operateman">提货人：</label>
                 <div class="controls">
-                <input type="text" id="deliveryman" name="deliveryman">
+                <input type="text" id="operateman" name="operateman">
                 </div>
             </div>
             <div class="control-group">

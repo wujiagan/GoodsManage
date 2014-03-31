@@ -30,9 +30,9 @@
 			</ul>
 
                <div class="nav pull-right">
-               	<form class="form-search" action="goods_search.jsp" method="post">
+               	<form class="form-search" action="order_out_search.jsp" method="post">
 		          <div class="input-append">
-		            <input type="text" class="span2 search-query" id="keyword" name="keyword">
+		            <input type="text" class="span2 search-query" name="keyword" id="keyword">
 		            <button type="submit" class="btn">Search</button>
 		          </div>
 		        </form>

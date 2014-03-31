@@ -22,44 +22,25 @@
             <li>
                 <a href="order_in_list.jsp">入库列表</a>
             </li>
-            <li class="active">
+            <li>
                 <a href="order_in_add.jsp">新建</a>
             </li>
-            <li>
+            <li class="active">
                 <a href="order_in_statistics.jsp">按时间查询</a>
             </li>
         </ul>
 
-        <form class="form-horizontal" action="order_in_docreate.jsp" method="post">
+        <form class="form-horizontal" action="order_in_searchByDate.jsp" method="post">
             <div class="control-group">
-                <label class="control-label" for="goods">商品名称：</label>
+                <label class="control-label" for="start_date">开始时间：</label>
                 <div class="controls">
-                    <select data-allow-blank="1" data-role="select2" id="goods" name="goods"><option selected value="__None">
-                    <%
-                    	while(iter.hasNext()) {
-                    		Goods goods = iter.next();
-                    %>
-                    <option value="<%=goods.getId() %>"><%=goods.getName() %></option>
-                    <% } %>
-                    </select>
+                  <input id="start_date" name="start_date" type="date">
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="amount">数量：</label>
+                <label class="control-label" for="end_date">结束时间：</label>
                 <div class="controls">
-                    <input type="text" id="amount" name="amount">
-                </div>
-            </div>
-            <div class="control-group">
-                <label class="control-label" for="operate_date">入库时间：</label>
-                <div class="controls">
-                  <input id="operate_date" name="operate_date" type="date">
-                </div>
-            </div>
-            <div class="control-group">
-                <label class="control-label" for="deliveryman">送货人：</label>
-                <div class="controls">
-                <input type="text" id="deliveryman" name="deliveryman">
+                  <input id="end_date" name="end_date" type="date">
                 </div>
             </div>
             <div class="control-group">

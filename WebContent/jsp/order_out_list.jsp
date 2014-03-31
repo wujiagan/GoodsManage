@@ -10,26 +10,23 @@
 <script src="../js/bootstrap.js"></script>
 <link href="../css/bootstrap.css" rel="stylesheet">
 <link href="../css/main.css" rel="stylesheet">
-<script type="text/javascript">
-	
-</script>
 </head>
 
 <body class="home">
 <%
-	List<Order> all = DAOFactory.getOrderInDAOInstance().getAll();
+	List<Order> all = DAOFactory.getOrderOutDAOInstance().getAll();
 	Iterator<Order> iter = all.iterator();
 %>
-     <%@include file="order_in_head.jsp" %>
+     <%@include file="order_out_head.jsp" %>
         <ul class="nav nav-tabs">
             <li class="active">
-                <a href="order_in_list.jsp">入库列表</a>
+                <a href="order_out_list.jsp">出库列表</a>
             </li>
             <li>
-                <a href="order_in_add.jsp">新建</a>
+                <a href="order_out_add.jsp">新建</a>
             </li>
             <li>
-                <a href="order_in_statistics.jsp">按时间查询</a>
+                <a href="order_out_statistics.jsp">按时间查询</a>
             </li>
         </ul>
 
@@ -40,7 +37,7 @@
                 <td>商品</td>
                 <td>数量</td>
                 <td>日期</td>
-                <td>送货人</td>
+                <td>提货人</td>
                 <td></td>
             </tr>
             <%

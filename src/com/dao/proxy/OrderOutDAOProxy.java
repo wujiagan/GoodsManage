@@ -4,16 +4,16 @@ import java.util.Date;
 import java.util.List;
 
 import com.dao.IOrderDAO;
-import com.dao.impl.IOrderInDAOImpl;
+import com.dao.impl.IOrderOutDAOImpl;
 import com.dbc.DatabaseConnection;
 import com.model.Order;
 
-public class OrderInDAOProxy implements IOrderDAO{
+public class OrderOutDAOProxy implements IOrderDAO {
 	private DatabaseConnection dbc = null;
 	private IOrderDAO dao = null;
-	public OrderInDAOProxy() throws Exception {
+	public OrderOutDAOProxy() throws Exception {
 		this.dbc = new DatabaseConnection();
-		this.dao = new IOrderInDAOImpl(this.dbc.getConnection());
+		this.dao = new IOrderOutDAOImpl(this.dbc.getConnection());
 	}
 	@Override
 	public boolean doCreate(Order order) throws Exception {

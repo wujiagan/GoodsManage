@@ -17,7 +17,7 @@
 
 <body class="home">
 <%
-	List<Order> all = DAOFactory.getOrderInDAOInstance().getAll();
+	List<Order> all = DAOFactory.getOrderInDAOInstance().findAll(request.getParameter("keyword"));
 	Iterator<Order> iter = all.iterator();
 %>
      <%@include file="order_in_head.jsp" %>

@@ -10,19 +10,18 @@ import java.util.List;
 import com.dao.IOrderDAO;
 import com.model.Order;
 
-public class IOrderInDAOImpl implements IOrderDAO{
-	
+public class IOrderOutDAOImpl implements IOrderDAO {
 	private Connection conn = null;
 	private PreparedStatement pstmt = null;
 	
-	public IOrderInDAOImpl(Connection  conn) {
+	public IOrderOutDAOImpl(Connection  conn) {
 		this.conn = conn;
 	}
 
 	@Override
 	public boolean doCreate(Order order) throws Exception {
 		boolean result = false;
-		String sql = "insert into order_in (goods_id, amount, in_date, deliveryman)"
+		String sql = "insert into order_out (goods_id, amount, in_date, operateman)"
 				+ "values (?, ?, ?, ?)";
 		this.pstmt = this.conn.prepareStatement(sql);
 		this.pstmt.setInt(1, order.getGoods_id());
@@ -38,9 +37,9 @@ public class IOrderInDAOImpl implements IOrderDAO{
 	@Override
 	public List<Order> findAll(String keyWord) throws Exception {
 		List<Order> all = new LinkedList<Order>();
-		String sql = "select order_in.id, goods.name, goods_id, amount, in_date, deliveryman " 
-				+ "from order_in, goods "
-				+ "where order_in.goods_id = goods.id "
+		String sql = "select order_out.id, goods.name, goods_id, amount, in_date, operateman " 
+				+ "from order_out, goods "
+				+ "where order_out.goods_id = goods.id "
 				+ "and goods.name like ? "
 				+ "order by in_date";
 		this.pstmt = this.conn.prepareStatement(sql);
@@ -64,7 +63,7 @@ public class IOrderInDAOImpl implements IOrderDAO{
 	@Override
 	public Order findById(int id) throws Exception {
 		Order order = null;
-		String sql = "select id, goods_id, amount, in_date, deliveryman from order_in "
+		String sql = "select id, goods_id, amount, in_date, operateman from order_out"
 				+ "where id like ?";
 		this.pstmt = this.conn.prepareStatement(sql);
 		this.pstmt.setString(1, "%" + id + "%");
@@ -84,8 +83,8 @@ public class IOrderInDAOImpl implements IOrderDAO{
 	@Override
 	public List<Order> getAll() throws Exception {
 		List<Order> all = new LinkedList<Order>();
-		String sql = "select id, goods_id, name,  amount, in_date, deliveryman from "
-				+ "order_in_view "
+		String sql = "select id, goods_id, name,  amount, in_date, operateman from "
+				+ "order_out_view "
 				+ "order by in_date";
 		this.pstmt = this.conn.prepareStatement(sql);
 		ResultSet rs = this.pstmt.executeQuery();
@@ -107,7 +106,7 @@ public class IOrderInDAOImpl implements IOrderDAO{
 	@Override
 	public boolean deleteById(int id) throws Exception {
 		boolean result = false;
-		String sql = "delete from order_in where id = ?";
+		String sql = "delete from order_out where id = ?";
 		this.pstmt = this.conn.prepareStatement(sql);
 		this.pstmt.setInt(1, id);
 		if(this.pstmt.executeUpdate() > 0)
@@ -117,11 +116,11 @@ public class IOrderInDAOImpl implements IOrderDAO{
 	}
 
 	@Override
-	public List<Order> findAll(Date start_date, Date end_date) throws Exception{
+	public List<Order> findAll(Date start_date, Date end_date) throws Exception {
 		List<Order> all = new LinkedList<Order>();
-		String sql = "select order_in.id, goods_id, goods.name,  amount, in_date, deliveryman from "
-				+ "order_in, goods "
-				+ "where goods.id = order_in.goods_id "
+		String sql = "select order_out.id, goods.name, goods_id, amount, in_date, operateman " 
+				+ "from order_out, goods "
+				+ "where order_out.goods_id = goods.id "
 				+ "and in_date > ? and in_date < ? "
 				+ "order by in_date";
 		this.pstmt = this.conn.prepareStatement(sql);
@@ -132,8 +131,8 @@ public class IOrderInDAOImpl implements IOrderDAO{
 		while(rs.next()) {
 			order = new Order();
 			order.setId(rs.getInt(1));
-			order.setGoods_id(rs.getInt(2));
-			order.setGoods_name(rs.getString(3));
+			order.setGoods_name(rs.getString(2));
+			order.setGoods_id(rs.getInt(3));
 			order.setAmount(rs.getInt(4));
 			order.setDate(rs.getDate(5));
 			order.setOperateMan(rs.getString(6));
@@ -142,5 +141,4 @@ public class IOrderInDAOImpl implements IOrderDAO{
 		this.pstmt.close();
 		return all;
 	}
-	
 }
